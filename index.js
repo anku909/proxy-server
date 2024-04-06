@@ -26,6 +26,10 @@ app.get("/api/v1", async (req, res) => {
   }
 });
 
+app.get("/", (req, res) => {
+  res.send("Server Running use /api/v1 to get json data");
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
