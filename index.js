@@ -17,7 +17,7 @@ app.get("/api/v1", (req, res) => {
 
 app.use("/api/v1/restaurantmenu/:id", (req, res, next) => {
   const resId = req.params.id;
-  const targetUrl = `https://cors-handlers.vercel.app/api/?url=https%3A%2F%2Fproxy-server-alpha-eosin.vercel.app%2Fapi%2Fv1%2Frestaurantmenu%2F${resId}`;
+  const targetUrl = `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6542&lng=77.2373&restaurantId=${resId}&isMenuUx4=true&submitAction`;
 
   const proxyMiddleware = createProxyMiddleware({
     target: targetUrl,
@@ -34,7 +34,7 @@ app.use("/api/v1/restaurantmenu/:id", (req, res, next) => {
 });
 app.get("/api/v1/restaurantmenu/:id", async (req, res) => {
   const resId = req.params.id;
-  const url = `https://cors-handlers.vercel.app/api/?url=https%3A%2F%2Fproxy-server-alpha-eosin.vercel.app%2Fapi%2Fv1%2Frestaurantmenu%2F${resId}`;
+  const url = `https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6542&lng=77.2373&restaurantId=${resId}&isMenuUx4=true&submitAction`;
 
   try {
     const response = await axios.get(url);
