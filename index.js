@@ -26,12 +26,19 @@ app.use("/api/v1/restaurantmenu/:id", (req, res, next) => {
 });
 app.get("/api/v1/restaurantmenu/:id", async (req, res) => {
   const resId = req.params.id;
-  console.log(resId);
-  const url = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6542&lng=77.2373&restaurantId=${resId}&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER`;
+  const customAxios = axios.create({
+    headers: {
+      "Content-Type": "application/json",
+      "User-Agent":
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 15_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148",
+    },
+  });
+  const url = `https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6542&lng=77.2373&restaurantId=${resId}`;
 
   try {
-    const response = await axios.get(url);
+    const response = await customAxios.get(url);
     res.json(response.data);
+    console.log(response.data);
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.status(500).json({ error: "Internal Server Error" });
