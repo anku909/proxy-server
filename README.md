@@ -2,6 +2,8 @@
 # Proxy Serve for Foody Web App
 
 ##### Provides Api's for foody frontend.
+#### Live : https://proxy-server-alpha-eosin.vercel.app/
+
 ## Run Locally
 
 Clone the project
